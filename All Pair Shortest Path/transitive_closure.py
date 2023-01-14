@@ -1,6 +1,7 @@
 # Transitive Closure of a Graph By Floyd-Warshall Algorithm
 
-def transitive_closure(connected):
+def transitive_closure(connected: list[list]) -> None:
+	"""Print the transitive closure."""
 	v = len(connected[0])
 	for k in range(v):
 		for i in range(v):

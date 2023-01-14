@@ -1,7 +1,8 @@
 # All Pair Shortest Path Program (Floyd-Warshall)
 from math import inf
 
-def all_pair_shortest_path(dist):
+def all_pair_shortest_path(dist: list[list]) -> None:
+	"""Find the all pair shortest path."""
 	v = len(dist[0])
 	for k in range(v):
 		for i in range(v):
