@@ -6,7 +6,7 @@ graph = {
     'E': ['D'],
 }
 
-def bfs(node):
+def breadth_first_search(node):
     visited = [False] * (len(graph))
     queue = []
     visited.append(node)
@@ -20,4 +20,4 @@ def bfs(node):
                 visited.append(neigh)
                 queue.append(neigh)
 
-bfs('A')
+breadth_first_search('A')

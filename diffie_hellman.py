@@ -1,39 +1,22 @@
-import random
+# public keys G and P
+P = 23 # A prime number P is taken
+G = 9 # A primitve root for P, G is taken
 
-def mod_pow(base, exponent, modulus):
-    result = 1
-    while exponent > 0:
-        if exponent & 1 == 1:
-            result = (result * base) % modulus
-        exponent = exponent >> 1
-        base = (base * base) % modulus
-    return result
+print("The Value of P is :", P)
+print("The Value of G is :", G)
 
-def generate_private_key(modulus):
-    return random.randint(2, modulus - 2)
+a = 4 # Alice will choose the private key a
+print("The Private Key a for Alice is :", a)
 
-def generate_public_key(private_key, base, modulus):
-    return mod_pow(base, private_key, modulus)
+x = int(pow(G,a,P)) # gets the generated key
 
-def generate_shared_secret(private_key, public_key, modulus):
-    return mod_pow(public_key, private_key, modulus)
+b = 3 # Bob will choose the private key b
+print("The Private Key b for Bob is :", b)
 
-if __name__ == '__main__':
-    modulus = int(input('Enter modulus: '))
-    base = int(input('Enter base: '))
-    alice_private_key = generate_private_key(modulus)
-    bob_private_key = generate_private_key(modulus)
-    alice_public_key = generate_public_key(alice_private_key, base, modulus)
-    bob_public_key = generate_public_key(bob_private_key, base, modulus)
-    alice_shared_secret = generate_shared_secret(alice_private_key, bob_public_key, modulus)
-    bob_shared_secret = generate_shared_secret(bob_private_key, alice_public_key, modulus)
-    print(f'Alice private key: {alice_private_key}')
-    print(f'Bob private key: {bob_private_key}')
-    print(f'Alice public key: {alice_public_key}')
-    print(f'Bob public key: {bob_public_key}')
-    print(f'Alice shared secret: {alice_shared_secret}')
-    print(f'Bob shared secret: {bob_shared_secret}')
-    if alice_shared_secret == bob_shared_secret:
-        print('Shared secrets match')
-    else:
-        print('Shared secrets do not match')
+y = int(pow(G,b,P)) # gets the generated key
+
+ka = int(pow(y,a,P)) # Secret key for Alice
+kb = int(pow(x,b,P)) # Secret key for Bob
+
+print("Secret key for the Alice is :", ka)
+print("Secret Key for the Bob is :", kb)

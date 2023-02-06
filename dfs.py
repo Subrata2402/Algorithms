@@ -11,11 +11,11 @@ graph = {
 
 visited = set()
 
-def dfs(visited, graph, node):
+def depth_first_search(visited, graph, node):
     if node not in visited:
         print(node, end=" ")
         visited.add(node)
         for neighbour in graph[node]:
-            dfs(visited, graph, neighbour)
+            depth_first_search(visited, graph, neighbour)
 
-dfs(visited, graph, 'A')
+depth_first_search(visited, graph, 'A')
