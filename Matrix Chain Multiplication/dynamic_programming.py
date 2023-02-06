@@ -1,5 +1,5 @@
 # Matrix Chain Multiplication with dynamic programming
-from math import inf as infinite
+from math import inf
 
 def matrix_chain_order(p, n):
 	m = [[0 for _ in range(n)] for _ in range(n)]
@@ -8,7 +8,7 @@ def matrix_chain_order(p, n):
 	for L in range(2, n):
 		for i in range(1, n - L + 1):
 			j = i + L - 1
-			m[i][j] = infinite
+			m[i][j] = inf
 			for k in range(i, j):
 				count = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]
 				if count < m[i][j]:

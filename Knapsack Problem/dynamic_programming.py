@@ -15,5 +15,10 @@ def dynamic_0_1_knapsack(value, weight, n, total_weight):
 
 	# Print the selected items here
 	k = total_weight
-	for i in range(n, 1):
-		pass
+	for i in range(1, n):
+		if keep[i][k] == 1:
+			print(i)
+			k = k - weight[i]
+
+	return value[n][w]
+
