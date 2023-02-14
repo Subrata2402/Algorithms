@@ -105,38 +105,47 @@ if 4 == 4:
 # Python for RSA asymmetric cryptographic algorithm.
 # For demonstration, values are
 # relatively small compared to practical application
+
+# Implement Diffie-Hellman algorithm in Python.
+
+# Python program to demonstrate
+# Diffie-Hellman algorithm
+
 import math
+import random
 
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+# a is sender private key
+# b is receiver private key
+a = random.randint(1, 10)
+b = random.randint(1, 10)
 
-p, q, e = 3, 7, 2
-n = p*q
-phi = (p-1)*(q-1)
+print("Private key of sender a : ", a)
+print("Private key of receiver b : ", b)
 
-while (e < phi):
-	# e must be co-prime to phi and
-	# smaller than phi.
-	if(gcd(e, phi) == 1):
-		break
-	else:
-		e = e+1
+# P is a large prime number
+P = 23
 
-# d*e = 1 + k * totient
-k = 2
-d = (1 + (k*phi))/e
+# G is a primitive root of P
+G = 9
 
-msg = 12.0
-print("Message data :", msg)
+print("The value of P : ", P)
+print("The value of G : ", G)
 
-# Encryption c = (msg ^ e) % n
-c = pow(msg, e)
-c = math.fmod(c, n)
-print("Encrypted data :", c)
+# gets the generated key
+x = int(math.pow(G, a) % P)
+y = int(math.pow(G, b) % P)
 
-# Decryption m = (c ^ d) % n
-m = pow(c, d)
-m = math.fmod(m, n)
-print("Original Message Sent :", m)
+print("Secret key for the sender is : ", x)
+print("Secret Key for the receiver is: ", y)
+
+# Secret key for sender
+ka = int(math.pow(y, a) % P)
+
+# Secret key for receiver
+kb = int(math.pow(x, b) % P)
+
+print("Secret key for the sender is : ", ka)
+print("Secret Key for the receiver is: ", kb)
+
+# This code is contributed by
+# Subrata Das
