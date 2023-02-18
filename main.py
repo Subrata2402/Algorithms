@@ -111,41 +111,59 @@ if 4 == 4:
 # Python program to demonstrate
 # Diffie-Hellman algorithm
 
-import math
-import random
+# import math
+# import random
 
-# a is sender private key
-# b is receiver private key
-a = random.randint(1, 10)
-b = random.randint(1, 10)
+# # a is sender private key
+# # b is receiver private key
+# a = random.randint(1, 10)
+# b = random.randint(1, 10)
 
-print("Private key of sender a : ", a)
-print("Private key of receiver b : ", b)
+# print("Private key of sender a : ", a)
+# print("Private key of receiver b : ", b)
 
-# P is a large prime number
-P = 23
+# # P is a large prime number
+# P = 23
 
-# G is a primitive root of P
-G = 9
+# # G is a primitive root of P
+# G = 9
 
-print("The value of P : ", P)
-print("The value of G : ", G)
+# print("The value of P : ", P)
+# print("The value of G : ", G)
 
-# gets the generated key
-x = int(math.pow(G, a) % P)
-y = int(math.pow(G, b) % P)
+# # gets the generated key
+# x = int(math.pow(G, a) % P)
+# y = int(math.pow(G, b) % P)
 
-print("Secret key for the sender is : ", x)
-print("Secret Key for the receiver is: ", y)
+# print("Secret key for the sender is : ", x)
+# print("Secret Key for the receiver is: ", y)
 
-# Secret key for sender
-ka = int(math.pow(y, a) % P)
+# # Secret key for sender
+# ka = int(math.pow(y, a) % P)
 
-# Secret key for receiver
-kb = int(math.pow(x, b) % P)
+# # Secret key for receiver
+# kb = int(math.pow(x, b) % P)
 
-print("Secret key for the sender is : ", ka)
-print("Secret Key for the receiver is: ", kb)
+# print("Secret key for the sender is : ", ka)
+# print("Secret Key for the receiver is: ", kb)
 
 # This code is contributed by
 # Subrata Das
+
+import openai
+
+openai.api_key = "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"
+
+prompt = input("Enter your prompt : ")
+
+response = openai.Completion.create(
+  model="text-davinci-003",
+  prompt=prompt,
+  temperature=0.7,
+  max_tokens=256,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
+# print(response)
+print(response["choices"][0]["text"], "\n\n")
