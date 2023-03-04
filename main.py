@@ -150,21 +150,22 @@ if 4 == 4:
 # This code is contributed by
 # Subrata Das
 
-# import openai
+import openai
 
-# openai.api_key = ""
+openai.api_key = "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"
 
-# prompt = input("Enter your prompt : ")
+while True:
+  prompt = input("Enter your prompt : ")
+  if prompt == "exit":
+    break
+  response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt,
+    temperature=0.7,
+    max_tokens=256,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0
+  )
 
-# response = openai.Completion.create(
-#   model="text-davinci-003",
-#   prompt=prompt,
-#   temperature=0.7,
-#   max_tokens=256,
-#   top_p=1,
-#   frequency_penalty=0,
-#   presence_penalty=0
-# )
-# # print(response)
-# print(response["choices"][0]["text"], "\n\n")
-
+  print(response["choices"][0]["text"], "\n\n")

@@ -18,7 +18,7 @@ def merge(arr, low, middle, high):
 			arr[k] = Right[j]
 			j += 1
 		k += 1
-	
+
 	while i < n1:
 		arr[k] = Left[i]
 		i += 1
